@@ -3,7 +3,10 @@
     <div class="main-container">
       <div class="filters">
         <div class="filter-heading">Filters</div>
-        <ProductFilters @checkbox-change="updateStockFilter" />
+        <ProductFilters
+          @checkbox-change="updateStockFilter"
+          @brand-checkbox-change="updateBrandFilter"
+        />
       </div>
       <div class="product-column">
         <div class="product-grid">
@@ -30,7 +33,12 @@ export default {
   data() {
     return {
       products,
-      inStockFilterOn: false,
+      filters: {
+        inStockFilterOn: false,
+        brand: {
+          nike: false,
+        },
+      },
     };
   },
   computed: {
@@ -43,14 +51,23 @@ export default {
     filteredProducts() {
       let filteredProductList = this.products;
 
-      return filteredProductList.filter((product) => this.stockFilter(product));
+      return filteredProductList
+        .filter((product) => this.stockFilter(product))
+        .filter((product) => this.brandFilter(product));
     },
     updateStockFilter(value) {
-      this.inStockFilterOn = value;
+      this.filters.inStockFilterOn = value;
+    },
+    updateBrandFilter(value) {
+      this.filters.brand.nike = value;
     },
     stockFilter(product) {
       // Return true if in stock filter is false or product is in stock.
-      return !this.inStockFilterOn || product.isAvailable;
+      return !this.filters.inStockFilterOn || product.isAvailable;
+    },
+    brandFilter(product) {
+      // Return true if brand filter is false or product brand is Nike.
+      return !this.filters.brand.nike || product.brand == 'Nike';
     },
   },
 };
