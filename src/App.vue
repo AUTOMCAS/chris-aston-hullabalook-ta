@@ -9,6 +9,7 @@
         />
       </div>
       <div class="product-column">
+        <div class="product-count">{{ productCount }} products</div>
         <div class="product-grid">
           <ProductGrid :products="productList" />
         </div>
@@ -45,6 +46,9 @@ export default {
     productList() {
       let updatedProductList = this.filteredProducts();
       return updatedProductList;
+    },
+    productCount() {
+      return this.productList.length;
     },
   },
   methods: {
@@ -104,6 +108,9 @@ export default {
   display: flex;
   flex-direction: column;
   width: 85%;
+}
+.product-count {
+  padding-left: 6px;
 }
 .product-grid {
   display: flex;
