@@ -10,6 +10,7 @@
       </div>
       <div class="product-column">
         <div class="product-count">{{ productCount }} products</div>
+        <SortByDropDown @sort-by-change="updateSortByOption" />
         <div class="product-grid">
           <ProductGrid :products="productList" />
         </div>
@@ -23,6 +24,7 @@ import ProductGridItem from './components/ProductGridItem.vue';
 import products from './data/products.json';
 import ProductGrid from './components/ProductGrid.vue';
 import ProductFilters from './components/ProductFilters.vue';
+import SortByDropDown from './components/SortByDropDown.vue';
 
 export default {
   name: 'App',
@@ -30,6 +32,7 @@ export default {
     ProductGridItem,
     ProductGrid,
     ProductFilters,
+    SortByDropDown,
   },
   data() {
     return {
@@ -40,11 +43,15 @@ export default {
           nike: false,
         },
       },
+      sortByOption: '',
     };
   },
   computed: {
     productList() {
       let updatedProductList = this.filteredProducts();
+
+      updatedProductList = this.sortedProducts(updatedProductList);
+
       return updatedProductList;
     },
     productCount() {
@@ -72,6 +79,18 @@ export default {
     brandFilter(product) {
       // Return true if brand filter is false or product brand is Nike.
       return !this.filters.brand.nike || product.brand == 'Nike';
+    },
+    sortedProducts(products) {
+      if (this.sortByOption === 'low-to-high') {
+        return products.slice().sort((a, b) => a.price - b.price);
+      } else if (this.sortByOption === 'high-to-low') {
+        return products.slice().sort((a, b) => b.price - a.price);
+      } else {
+        return products;
+      }
+    },
+    updateSortByOption(value) {
+      this.sortByOption = value;
     },
   },
 };
