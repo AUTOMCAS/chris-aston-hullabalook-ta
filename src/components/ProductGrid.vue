@@ -1,6 +1,10 @@
 <template>
   <div class="product-list-container">
-    <ProductGridItem :product="products[0]" />
+    <div class="product-list">
+      <div v-for="product in products" :key="product.id">
+        <ProductGridItem :product="product" />
+      </div>
+    </div>
   </div>
 </template>
 

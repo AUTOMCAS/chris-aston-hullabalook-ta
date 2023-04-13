@@ -1,7 +1,11 @@
 <template>
   <div class="product-grid-item">
     <img class="product-image" :src="product.image" />
-    <p class="product-name">{{ product.name }}</p>
+    <div class="product-info">
+      <div class="product-name">{{ product.name }}</div>
+      <div>{{ product.brand }}</div>
+      <div>{{ product.price }}</div>
+    </div>
   </div>
 </template>
 
