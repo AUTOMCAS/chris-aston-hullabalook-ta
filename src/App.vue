@@ -2,7 +2,9 @@
   <div class="app" ref="app-container">
     <div class="filters">
       <h3>Filters</h3>
-      <div></div>
+      <div>
+        <ProductFilters @checkbox-change="updateStockFilter" />
+      </div>
     </div>
 
     <div class="product-grid">
@@ -15,16 +17,19 @@
 import ProductGridItem from './components/ProductGridItem.vue';
 import products from './data/products.json';
 import ProductGrid from './components/ProductGrid.vue';
+import ProductFilters from './components/ProductFilters.vue';
 
 export default {
   name: 'App',
   components: {
     ProductGridItem,
     ProductGrid,
+    ProductFilters,
   },
   data() {
     return {
       products,
+      inStockFilterOn: false,
     };
   },
   computed: {
@@ -37,7 +42,14 @@ export default {
     filteredProducts() {
       let filteredProductList = this.products;
 
-      return filteredProductList.filter((product) => product.isAvailable);
+      return filteredProductList.filter((product) => this.stockFilter(product));
+    },
+    updateStockFilter(value) {
+      this.inStockFilterOn = value;
+    },
+    stockFilter(product) {
+      // Return true if in stock filter is false or product is in stock.
+      return !this.inStockFilterOn || product.isAvailable;
     },
   },
 };
