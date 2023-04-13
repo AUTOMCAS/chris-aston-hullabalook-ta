@@ -1,5 +1,8 @@
 <template>
   <div class="app" ref="app-container">
+    <div class="top-header">
+      <div class="main-header">Chris' shoe store</div>
+    </div>
     <div class="main-container">
       <div class="filters">
         <div class="filter-heading">Filters</div>
@@ -9,8 +12,10 @@
         />
       </div>
       <div class="product-column">
-        <div class="product-count">{{ productCount }} products</div>
-        <SortByDropDown @sort-by-change="updateSortByOption" />
+        <div class="product-top-bar">
+          <div class="product-count">{{ productCount }} products</div>
+          <SortByDropDown @sort-by-change="updateSortByOption" />
+        </div>
         <div class="product-grid">
           <ProductGrid :products="productList" />
         </div>
@@ -113,6 +118,24 @@ export default {
 </style>
 
 <style scoped>
+.top-header {
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  align-items: center;
+}
+.main-header {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+.product-top-bar {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
 .filter-heading {
   font-weight: bold;
   color: black;

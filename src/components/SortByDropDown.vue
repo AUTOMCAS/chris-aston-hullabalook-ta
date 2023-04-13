@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sort-by-wrapper">
   <label>Sort by:</label>
   <select id="sort-by-price" v-model="sortByOption" @change="handleChange">
   <option value="">None</option>
@@ -24,3 +24,10 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+.sort-by-wrapper label {
+  padding-right: 6px;
+}
+</style>
