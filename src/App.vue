@@ -1,14 +1,15 @@
 <template>
   <div class="app" ref="app-container">
-    <div class="filters">
-      <h3>Filters</h3>
-      <div>
+    <div class="main-container">
+      <div class="filters">
+        <div class="filter-heading">Filters</div>
         <ProductFilters @checkbox-change="updateStockFilter" />
       </div>
-    </div>
-
-    <div class="product-grid">
-      <ProductGrid :products="productList" />
+      <div class="product-column">
+        <div class="product-grid">
+          <ProductGrid :products="productList" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -68,5 +69,31 @@ export default {
 
 .link {
   color: #3a7f71;
+}
+</style>
+
+<style scoped>
+.filter-heading {
+  font-weight: bold;
+  color: black;
+  margin-bottom: 16px;
+}
+.main-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+.product-column {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+.product-grid {
+  display: flex;
+  flex-grow: 1;
+}
+.filters {
+  width: 15%;
+  margin-right: 12px;
 }
 </style>
