@@ -30,4 +30,7 @@ export default {
 .sort-by-wrapper label {
   padding-right: 6px;
 }
+select {
+    font-family: 'Poppins', sans-serif;
+}
 </style>
