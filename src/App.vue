@@ -6,9 +6,7 @@
     </div>
 
     <div class="product-grid">
-      <!-- <ProductGridItem :product="products[0]" />
-      <ProductGridItem :product="products[1]" /> -->
-      <ProductGrid :products="products" />
+      <ProductGrid :products="productList" />
     </div>
   </div>
 </template>
@@ -28,6 +26,19 @@ export default {
     return {
       products,
     };
+  },
+  computed: {
+    productList() {
+      let updatedProductList = this.filteredProducts();
+      return updatedProductList;
+    },
+  },
+  methods: {
+    filteredProducts() {
+      let filteredProductList = this.products;
+
+      return filteredProductList.filter((product) => product.isAvailable);
+    },
   },
 };
 </script>
