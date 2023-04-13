@@ -123,6 +123,7 @@ export default {
   flex-direction: column;
   height: 180px;
   align-items: center;
+  padding-top: 16px;
 }
 .main-header {
   font-size: 32px;
