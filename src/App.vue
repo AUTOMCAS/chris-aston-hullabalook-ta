@@ -33,12 +33,14 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .app {
   max-width: 1024px;
   margin: 0 auto;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #606569;
+  font-size: 12px;
 }
 
 .link {

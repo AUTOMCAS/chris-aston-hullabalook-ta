@@ -20,3 +20,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.product-list-container {
+  display: flex;
+  width: 100%;
+}
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
