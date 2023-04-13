@@ -1,5 +1,6 @@
 <template>
   <div class="filter-categories">
+    <div class="filter-heading">Availability</div>
     <FilterCheckbox
       label="In stock"
       @checkbox-change="$emit('checkbox-change', $event)"
@@ -25,3 +26,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.filter-categories {
+  margin-bottom: 20px;
+}
+.filter-heading {
+  margin-bottom: 6px;
+}
+.label {
+  cursor: pointer;
+}
+</style>
